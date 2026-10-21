@@ -34,9 +34,11 @@ namespace MechanicsWorkshop.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
@@ -125,7 +127,7 @@ namespace MechanicsWorkshop.Migrations
                     b.Property<int>("Odometer")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Rego")
+                    b.Property<DateTime?>("Rego")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Year")
