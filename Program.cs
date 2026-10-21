@@ -30,5 +30,8 @@ app.UseHttpsRedirection();
 var customers = app.MapGroup("/customers");
 Customers.Map(customers);
 
+var vehicles = app.MapGroup("/vehicles");
+Vehicles.Map(vehicles);
+
 app.Run();
 

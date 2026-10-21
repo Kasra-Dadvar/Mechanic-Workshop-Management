@@ -6,5 +6,5 @@ public class Service
     public DateTime NextServiceDue { get; set; }
     public int NextOdometerDue { get; set; }
     public Guid VehicleId { get; set; }
-    public List<Item> Items { get; set; }
+    public List<Item> Items { get; set; } = [];
 }

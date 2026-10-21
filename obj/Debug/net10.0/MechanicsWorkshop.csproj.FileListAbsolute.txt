@@ -168,3 +168,4 @@ C:\MechanicsWorkshop\obj\Debug\net10.0\ref\MechanicsWorkshop.dll
 C:\MechanicsWorkshop\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\MechanicsWorkshop\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\MechanicsWorkshop\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\MechanicsWorkshop\obj\Debug\net10.0\MechanicsWorkshop.sourcelink.json
