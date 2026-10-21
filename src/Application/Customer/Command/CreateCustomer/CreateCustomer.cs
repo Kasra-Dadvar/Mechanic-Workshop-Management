@@ -5,9 +5,9 @@ using MediatR;
 public record CreateCustomerCommand : IRequest<Guid>
 {
     [Required]
-    public string? Name { get; init; }
+    public required string Name { get; init; }
     [Required]
-    public string? Email { get; set; }
+    public required string Email { get; set; }
     public string? Phone { get; set; }
 }
 
