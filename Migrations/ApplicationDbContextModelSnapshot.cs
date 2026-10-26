@@ -84,6 +84,10 @@ namespace MechanicsWorkshop.Migrations
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("NextOdometerDue")
                         .HasColumnType("int");
 
@@ -151,11 +155,13 @@ namespace MechanicsWorkshop.Migrations
 
             modelBuilder.Entity("Service", b =>
                 {
-                    b.HasOne("Vehicle", null)
+                    b.HasOne("Vehicle", "Vehicle")
                         .WithMany("Services")
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("Vehicle", b =>

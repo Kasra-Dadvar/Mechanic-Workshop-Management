@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 public interface IApplicationDbContext
 {
@@ -7,5 +8,6 @@ public interface IApplicationDbContext
     DbSet<Service> Services { get; set; }
     DbSet<Item> Items { get; set; }
 
+    EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
