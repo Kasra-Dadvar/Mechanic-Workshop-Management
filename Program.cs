@@ -36,5 +36,8 @@ Vehicles.Map(vehicles);
 var services = app.MapGroup("/services");
 Services.Map(services);
 
+var items = app.MapGroup("/items");
+Items.Map(items);
+
 app.Run();
 

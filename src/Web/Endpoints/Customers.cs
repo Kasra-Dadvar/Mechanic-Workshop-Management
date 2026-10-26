@@ -9,6 +9,8 @@ public class Customers
        groupBuilder.MapGet("/{id}", GetCustomers);
        groupBuilder.MapPut("/{id}/update", UpdateCustomer);
        groupBuilder.MapDelete("/{id}/delete", DeleteCustomer);
+
+       groupBuilder.MapGet("/{id}/vehicles", GetCustomerVehicles);
     }
 
     public static async Task<IResult> CreateCustomer(ISender sender, CreateCustomerCommand command)
@@ -40,4 +42,11 @@ public class Customers
 
         return TypedResults.NoContent();
     }
+
+    public static async Task<IResult> GetCustomerVehicles(ISender sender, Guid id)
+    {
+        var customerVehicles = await sender.Send(new GetCustomerVehiclesQuery(id));
+
+        return TypedResults.Ok(customerVehicles);
+    } 
 }

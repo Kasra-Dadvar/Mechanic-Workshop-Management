@@ -7,6 +7,7 @@ public class Vehicle
     public int Odometer { get; set; }
     public required string LicensePlate { get; set; }
     public Guid CustomerId { get; set; }
+    public Customer? Customer {get; set;}
     public List<Service> Services { get; set; } = [];
     public DateTime? Rego { get; set; }
 }

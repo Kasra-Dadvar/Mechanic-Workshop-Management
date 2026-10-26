@@ -24,14 +24,10 @@ public class GetVehicleQueryHandler : IRequestHandler<GetVehicleQuery, VehicleDt
               Year = v.Year,
               Odometer = v.Odometer,
               LicensePlate = v.LicensePlate,
-              OwnerName = _dbContext.Customers.Where(c => c.Id == v.CustomerId).Select(c => c.Name).FirstOrDefault(),
+              OwnerName = v.Customer!.Name,
               Rego = v.Rego
             })
-            .FirstOrDefaultAsync(cancellationToken);
-            if (vehicle == null)
-            {
-                throw new KeyNotFoundException($"Vehicle with ID {request.id} not found.");
-            }
+            .FirstAsync(cancellationToken);
         
         return vehicle;
     }
