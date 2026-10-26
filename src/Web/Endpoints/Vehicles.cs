@@ -7,6 +7,8 @@ public class Vehicles{
             groupBuilder.MapGet("/{id}", GetVehicle);
             groupBuilder.MapPut("/{id}/update", UpdateVehicle);
             groupBuilder.MapDelete("/{id}/delete", DeleteVehicle);
+
+            groupBuilder.MapGet("/{id}/services", GetVehicleServices);
         }
 
     public static async Task<IResult> CreateVehicle(ISender sender, CreateVehicleCommand command)
@@ -35,6 +37,13 @@ public class Vehicles{
         await sender.Send(new DeleteVehicleCommand(id));
 
         return TypedResults.NoContent();
+    }
+
+    public static async Task<IResult> GetVehicleServices(ISender sender, Guid id)
+    {
+        var vehicleServices = await sender.Send(new GetVehicleServicesQuery(id));
+
+        return TypedResults.Ok(vehicleServices);
     }
     
 }

@@ -8,6 +8,8 @@ public class Services
         groupBuilder.MapGet("/{id}", GetService);
         groupBuilder.MapPut("/{id}/update", UpdateService);
         groupBuilder.MapDelete("/{id}/delete", DeleteService);
+
+        groupBuilder.MapGet("/{id}/items", GetServiceItems);
     }
 
     public static async Task<IResult> CreateService(ISender sender, CreateServiceCommand command)
@@ -37,4 +39,11 @@ public class Services
 
         return TypedResults.NoContent();
     }
+
+    public static async Task<IResult> GetServiceItems(ISender sender, Guid id)
+    {
+        var listItems = await sender.Send(new GetServiceItemsQuery(id));
+
+        return TypedResults.Ok(listItems);
+    } 
 }

@@ -146,11 +146,13 @@ namespace MechanicsWorkshop.Migrations
 
             modelBuilder.Entity("Item", b =>
                 {
-                    b.HasOne("Service", null)
+                    b.HasOne("Service", "Service")
                         .WithMany("Items")
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("Service", b =>
@@ -166,11 +168,13 @@ namespace MechanicsWorkshop.Migrations
 
             modelBuilder.Entity("Vehicle", b =>
                 {
-                    b.HasOne("Customer", null)
+                    b.HasOne("Customer", "customer")
                         .WithMany("Vehicles")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("customer");
                 });
 
             modelBuilder.Entity("Customer", b =>

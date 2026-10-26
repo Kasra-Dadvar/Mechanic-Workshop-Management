@@ -15,7 +15,6 @@ public class GetServiceQueryHandler : IRequestHandler<GetServiceQuery, ServiceDt
     public async Task<ServiceDto> Handle(GetServiceQuery request, CancellationToken cancellationToken)
     {
         var service = await _dbContext.Services
-        .Include(s => s.Vehicle)
         .Where(s => s.Id == request.Id)
         .Select(s => new ServiceDto
         {
