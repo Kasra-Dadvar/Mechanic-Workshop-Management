@@ -29,7 +29,7 @@ public class CreateVehicleCommandHandler : IRequestHandler<CreateVehicleCommand,
 
     public async Task<Guid> Handle(CreateVehicleCommand request, CancellationToken cancellationToken)
     {
-     if (request.CustomerId != Guid.Empty)
+     if (request.CustomerId == Guid.Empty)
         {
             throw new ArgumentException("CustomerId cannot be empty.", nameof(request.CustomerId));
         }

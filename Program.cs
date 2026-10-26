@@ -33,5 +33,8 @@ Customers.Map(customers);
 var vehicles = app.MapGroup("/vehicles");
 Vehicles.Map(vehicles);
 
+var services = app.MapGroup("/services");
+Services.Map(services);
+
 app.Run();
 
