@@ -5,12 +5,20 @@ public class Customers
 {
     public static void Map(RouteGroupBuilder groupBuilder)
     {
+       groupBuilder.MapGet("/", GetAllCustomers);
        groupBuilder.MapPost("/", CreateCustomer);
-       groupBuilder.MapGet("/{id}", GetCustomers);
+       groupBuilder.MapGet("/{id}", GetCustomer);
        groupBuilder.MapPut("/{id}/update", UpdateCustomer);
        groupBuilder.MapDelete("/{id}/delete", DeleteCustomer);
 
        groupBuilder.MapGet("/{id}/vehicles", GetCustomerVehicles);
+    }
+
+    public static async Task<IResult> GetAllCustomers(ISender sender)
+    {
+        var customers = await sender.Send(new GetAllCustomersQuery());
+
+        return TypedResults.Ok(customers);
     }
 
     public static async Task<IResult> CreateCustomer(ISender sender, CreateCustomerCommand command)
@@ -21,7 +29,7 @@ public class Customers
         return TypedResults.Created($"/customers/{id}", id);
     }
 
-    public static async Task<IResult> GetCustomers(ISender sender, Guid id)
+    public static async Task<IResult> GetCustomer(ISender sender, Guid id)
     {
         var customer = await sender.Send(new GetCustomerQuery(id));
 
