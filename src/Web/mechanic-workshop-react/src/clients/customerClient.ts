@@ -4,6 +4,7 @@ import type {
   UpdateCustomerRequest,
   UpdateCustomerResponse,
 } from '../models/customers/customer'
+import type { Vehicle } from '../models/vehicles/vehicle'
 import { request } from './httpClient'
 
 export function getCustomers(): Promise<Customer[]> {
@@ -12,6 +13,10 @@ export function getCustomers(): Promise<Customer[]> {
 
 export function getCustomer(id: string): Promise<Customer> {
   return request<Customer>(`/customers/${id}`)
+}
+
+export function getCustomerVehicles(id: string): Promise<Vehicle[]> {
+  return request<Vehicle[]>(`/customers/${id}/vehicles`)
 }
 
 // The API responds with the new customer's id as a plain JSON string.

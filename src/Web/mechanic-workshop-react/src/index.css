@@ -287,6 +287,31 @@ input[aria-invalid='true'] {
   vertical-align: -0.15em;
 }
 
+/* Section header with a right-aligned action */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Vehicle link in detail table rows */
+.row-link {
+  color: #102a43;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.row-link:hover {
+  color: var(--primary);
+}
+
 /* Data display */
 table {
   width: 100%;
